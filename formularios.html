@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios</title>
+</head>
+
+<body>
+    <h2>Formularios</h2>
+    <hr>
+
+    <form>
+        <!-- rut -->
+        <div>
+            <label for="txtrut">RUT:</label>
+            <input id="txtrut" type="text">
+        </div>
+        <!-- nombre -->
+        <div>
+            <label for="txtnombre">Nombre:</label>
+            <input id="txtnombre" type="text">
+        </div>
+        <!-- email -->
+        <div>
+            <label for="txtemail">Email:</label>
+            <input id="txtemail" type="email">
+        </div>
+        <!-- edad -->
+        <div>
+            <label for="txtedad">Edad:</label>
+            <input id="txtedad" type="number" min="0" max="100">
+        </div>
+        <!-- carrera -->
+        <div>
+            <label for="cmbcarrera">Carrera</label>
+            <select id="cmbcarrera">
+                <option>T.U. en Informática</option>
+                <option>Ingeniería en Informática</option>
+                <option>Ingeniería en Software</option>
+            </select>
+        </div>
+        <!-- jornada -->
+        <div>
+            <label>Jornada</label>
+            <br>
+            <input type="radio" name="rdjornada" checked>Diurna
+            <br>
+            <input type="radio" name="rdjornada">Vespertina
+        </div>
+        <!-- gratuidad -->
+        <div>
+            <input type="checkbox" id="chkgratuidad">
+            <label for="chkgratuidad">Estudia con gratuidad</label>
+        </div>
+
+
+        <!-- boton -->
+        <button type="submit">Crear Cuenta</button>
+    </form>
+</body>
+
+</html>

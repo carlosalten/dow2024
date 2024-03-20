@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablas</title>
+
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Tablas</h2>
+    <hr>
+    <table>
+        <!-- encabezado -->
+        <tr>
+            <th>Profesor</th>
+            <th>Email</th>
+            <th>Título</th>
+        </tr>
+
+        <!-- primera fila -->
+        <tr>
+            <td>Carlos Alten</td>
+            <td>carlos.alten@usm.cl</td>
+            <td rowspan="2">Ingeniero en Informática</td>
+        </tr>
+
+        <!-- segunda fila -->
+        <tr>
+            <td>Pamela Gatica</td>
+            <td>pamela.gatica@usm.cl</td>
+            <!-- <td>Ingeniero en Informática</td> -->
+        </tr>
+
+        <!-- tercera fila -->
+        <tr>
+            <td>Dagoberto Cabrera</td>
+            <td>dagoberto.cabrera@usm.cl</td>
+            <td>Ingeniero en Electrónica</td>
+        </tr>
+    </table>
+</body>
+
+</html>
