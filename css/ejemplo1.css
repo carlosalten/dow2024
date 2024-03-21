@@ -1,0 +1,30 @@
+html {
+    font-size: 20px;
+    background-color: azure;
+}
+
+/* estilo que aplica a todos los párrafos */
+p {
+    font-size: 24px;
+    color: darkblue;
+}
+
+#parrafo1 {
+    color: #0000FF;
+    text-align: justify;
+}
+
+ul {
+    list-style-type: square;
+    padding-left: 80px;
+}
+
+.carrera_vespertina {
+    font-weight: bold;
+}
+
+.texto_destacado {
+    font-weight: bold;
+    color: red;
+    text-decoration: underline;
+}
