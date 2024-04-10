@@ -1,0 +1,10 @@
+//colores personalizados
+$primary: #165739;
+$secondary: #869476;
+
+//cambio de fuente
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+$font-family-base: "Playfair Display", serif;
+
+//importar hoja de bootstrap
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
