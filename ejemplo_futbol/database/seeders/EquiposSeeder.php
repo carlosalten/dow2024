@@ -16,7 +16,7 @@ class EquiposSeeder extends Seeder
         DB::table('equipos')->insert([
             ['nombre'=>'Curicó Unido','entrenador'=>'Damián Muñoz'],
             ['nombre'=>'Universidad Católica','entrenador'=>'Cristian Paolucci'],
-            ['nombre'=>'Cobresal','entrenador'=>'Gustavo Huerta']            
+            ['nombre'=>'Cobresal','entrenador'=>'Gustavo Huerta']          
         ]);
     }
 }
