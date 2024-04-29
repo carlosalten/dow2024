@@ -1,7 +1,11 @@
 @extends('templates.master')
 
+@section('hojas-estilo')
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+@endsection
+
 @section('contenido-principal')
-<div class="row">
+<div class="row mt-3">
     <div class="col">
         <h4>Equipos</h4>
     </div>
@@ -30,20 +34,19 @@
                     <td>
                         <div class="row">
                             <div class="col">
-                                <form method="POST" action="http://localhost:8000/equipos/1">
-                                    <input type="hidden" name="_method" value="delete"> <input type="hidden" name="_token" value="skrXwOqOq9w7SDl5FFM1Al8I2qDg3SO66QwKjkHm"> <button class="btn btn-sm btn-danger" type="submit" data-bs-toggle="tooltip" data-bs-title="Borrar {{ $equipo->nombre }}">
+                                <div class="col">
+                                    <a href="#" class="btn btn-sm btn-danger pb-0 text-white" data-bs-toggle="tooltip" data-bs-title="Borrar {{ $equipo->nombre }}">
                                         <span class="material-icons">delete</span>
-                                    </button>
-                                </form>
-
+                                    </a>
+                                </div>
                             </div>
                             <div class="col">
-                                <a href="http://localhost:8000/equipos/1/edit" class="btn btn-sm btn-warning pb-0 text-white" data-bs-toggle="tooltip" data-bs-title="Editar {{ $equipo->nombre }}">
+                                <a href="#" class="btn btn-sm btn-warning pb-0 text-white" data-bs-toggle="tooltip" data-bs-title="Editar {{ $equipo->nombre }}">
                                     <span class="material-icons">edit</span>
                                 </a>
                             </div>
                             <div class="col">
-                                <a href="http://localhost:8000/equipos/1" class="btn btn-sm btn-info pb-0 text-white position-relative" data-bs-toggle="tooltip" data-bs-title="Ver {{ $equipo->nombre }}">
+                                <a href="#" class="btn btn-sm btn-info pb-0 text-white position-relative" data-bs-toggle="tooltip" data-bs-title="Ver {{ $equipo->nombre }}">
                                     <span class="material-icons">group</span>
                                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
                                         10
@@ -86,4 +89,12 @@
     </div>
 </div>
 
+@endsection
+
+@section('scripts')
+<script>
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+</script>
 @endsection

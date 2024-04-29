@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-custom.min.css') }}">
+    @yield('hojas-estilo')
     <title>Sistema de Campeonato de Fútbol</title>
 </head>
 
@@ -49,16 +50,16 @@
                             <a class="nav-link " href="{{ route('equipos.index') }}">Equipos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Estadios</a>
+                            <a class="nav-link" href="{{ route('estadios.index') }}">Estadios</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Estadísticas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="#">Jugadores</a>
+                            <a class="nav-link " href="{{ route('jugadores.index') }}">Jugadores</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="#">Partidos</a>
+                            <a class="nav-link " href="{{ route('partidos.index') }}">Partidos</a>
                         </li>
 
                         <li class="nav-item dropdown">
@@ -68,7 +69,6 @@
                             <ul class="dropdown-menu bg-primary dropdown-menu-dark">
                                 <li><a class="dropdown-item" href="#">Cambiar Contraseña</a></li>
                                 <li><a class="dropdown-item" href="#">Usuarios</a></li>
-                                <li><a class="dropdown-item" href="#">Privacidad</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -96,6 +96,7 @@
     <!-- /contenido principal-->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    @yield('scripts')
 </body>
 
 </html>

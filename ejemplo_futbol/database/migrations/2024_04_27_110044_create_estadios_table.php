@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('equipos', function (Blueprint $table) {
+        Schema::create('estadios', function (Blueprint $table) {
             $table->unsignedInteger('id')->autoIncrement();
             $table->string('nombre',20);
-            $table->string('entrenador',30);
+            $table->string('imagen',20)->nullable();//campo opcional
             // $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('equipos');
+        Schema::dropIfExists('estadios');
     }
 };

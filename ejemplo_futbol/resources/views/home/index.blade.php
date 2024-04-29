@@ -12,11 +12,11 @@
     <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-3">
         <div>
             <div class="card">
-                <img class="card-img-top" src="{{ asset('images/equipos.jpg') }}">
+                <img class="card-img-top" src="{{ asset('images/cards_portada/equipos.jpg') }}">
                 <div class="card-body">
                     <h5 class="card-title">Equipos</h5>
                     <div class="btn-group d-flex">
-                        <a class="btn btn-outline-success" href="#">Ver</a>
+                        <a class="btn btn-outline-success" href="{{ route('equipos.index') }}">Ver</a>
                     </div>
                 </div>
             </div>
@@ -26,11 +26,11 @@
     <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-3">
         <div>
             <div class="card">
-                <img class="card-img-top" src="{{ asset('images/estadios.jpg') }}">
+                <img class="card-img-top" src="{{ asset('images/cards_portada/estadios.jpg') }}">
                 <div class="card-body">
                     <h5 class="card-title">Estadios</h5>
                     <div class="btn-group d-flex">
-                        <a class="btn btn-outline-success" href="#">Ver</a>
+                        <a class="btn btn-outline-success" href="{{ route('estadios.index') }}">Ver</a>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
     <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-3">
         <div>
             <div class="card">
-                <img class="card-img-top" src="{{ asset('images/estadisticas.jpg') }}">
+                <img class="card-img-top" src="{{ asset('images/cards_portada/estadisticas.jpg') }}">
                 <div class="card-body">
                     <h5 class="card-title">Estadísticas</h5>
                     <div class="btn-group d-flex">
@@ -54,11 +54,11 @@
     <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-3">
         <div>
             <div class="card">
-                <img class="card-img-top" src="{{ asset('images/jugadores.jpg') }}">
+                <img class="card-img-top" src="{{ asset('images/cards_portada/jugadores.jpg') }}">
                 <div class="card-body">
                     <h5 class="card-title">Jugadores</h5>
                     <div class="btn-group d-flex">
-                        <a class="btn btn-outline-success" href="#">Ver</a>
+                        <a class="btn btn-outline-success" href="{{ route('jugadores.index') }}">Ver</a>
                     </div>
                 </div>
             </div>
@@ -68,11 +68,11 @@
     <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-3">
         <div>
             <div class="card">
-                <img class="card-img-top" src="{{ asset('images/partidos.jpg') }}">
+                <img class="card-img-top" src="{{ asset('images/cards_portada/partidos.jpg') }}">
                 <div class="card-body">
                     <h5 class="card-title">Partidos</h5>
                     <div class="btn-group d-flex">
-                        <a class="btn btn-outline-success" href="#">Ver</a>
+                        <a class="btn btn-outline-success" href="{{ route('partidos.index') }}">Ver</a>
                     </div>
                 </div>
             </div>
@@ -82,7 +82,7 @@
     <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-3">
         <div>
             <div class="card">
-                <img class="card-img-top" src="{{ asset('images/configuracion.jpg') }}">
+                <img class="card-img-top" src="{{ asset('images/cards_portada/configuracion.jpg') }}">
                 <div class="card-body">
                     <h5 class="card-title">Configuración</h5>
                     <div class="btn-group d-flex">
