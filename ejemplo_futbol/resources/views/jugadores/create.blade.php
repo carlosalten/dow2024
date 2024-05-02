@@ -16,7 +16,7 @@
     <div class="card">
         <div class="card-header bg-dark text-white">Ingrese los datos del nuevo jugador</div>
         <div class="card-body">
-            <form method="POST" action="">
+            <form method="POST" action="{{ route('jugadores.store') }}">
                 @csrf
                 {{-- rut --}}
                 <div class="mb-3">
@@ -70,7 +70,9 @@
                 <div class="mb-3">
                     <label class="form-label" for="equipo">Equipo</label>
                     <select id="equipo" name="equipo" class="form-control">
-                        <option value="1">Equipo</option>
+                        @foreach($equipos as $equipo)
+                        <option value="{{ $equipo->id }}">{{ $equipo->nombre }}</option>
+                        @endforeach
                     </select>
                 </div>
                 {{-- botones --}}

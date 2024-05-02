@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Jugador extends Model
 {
@@ -23,4 +24,9 @@ class Jugador extends Model
 
     //no se utiliza timestamps en tabla equipos
     public $timestamps = false;
+
+    //relacion 1:N con equipo
+    public function equipo():BelongsTo{
+        return $this->belongsTo(Equipo::class);
+    }
 }

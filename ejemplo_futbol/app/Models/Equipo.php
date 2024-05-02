@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Equipo extends Model
 {
@@ -14,4 +15,9 @@ class Equipo extends Model
 
     //no se utiliza timestamps en tabla equipos
     public $timestamps = false;
+
+    //relacion 1:N con jugadores
+    public function jugadores():HasMany{
+        return $this->hasMany(Jugador::class);
+    }
 }

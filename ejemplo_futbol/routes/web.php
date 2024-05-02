@@ -23,6 +23,7 @@ Route::post('/estadios',[EquiposController::class,'store'])->name('estadios.stor
 Route::get('/jugadores',[JugadoresController::class,'index'])->name('jugadores.index');
 Route::get('/jugadores/crear',[JugadoresController::class,'create'])->name('jugadores.create');
 Route::post('/jugadores',[JugadoresController::class,'store'])->name('jugadores.store');
+Route::delete('/jugadores/{jugador}',[JugadoresController::class,'destroy'])->name('jugadores.destroy');
 
 //partidos
 Route::get('/partidos',[PartidosController::class,'index'])->name('partidos.index');

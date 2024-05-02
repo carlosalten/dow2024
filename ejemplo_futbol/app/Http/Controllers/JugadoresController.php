@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jugador;
+use App\Models\Equipo;
 use Illuminate\Http\Request;
 
 class JugadoresController extends Controller
@@ -21,7 +22,11 @@ class JugadoresController extends Controller
      */
     public function create()
     {
-        return view('jugadores.create');
+        //obtener equipos en el orden que están ingresados a la tabla
+        // $equipos = Equipo::all();
+
+        $equipos = Equipo::orderBy('nombre')->get();
+        return view('jugadores.create',compact('equipos'));
     }
 
     /**
@@ -29,7 +34,22 @@ class JugadoresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //crear un jugador
+        $jugador = new Jugador();
+
+        //asignar valor a sus atributos
+        $jugador->rut = $request->rut;
+        $jugador->nombre = $request->nombre;
+        $jugador->apellido = $request->apellido;
+        $jugador->numero_camiseta = $request->numero_camiseta;
+        $jugador->posicion = $request->posicion;
+        $jugador->equipo_id = $request->equipo;
+
+        //guardar en BD
+        $jugador->save();
+
+        //redireccion
+        return redirect()->route('jugadores.index');
     }
 
     /**
@@ -61,6 +81,7 @@ class JugadoresController extends Controller
      */
     public function destroy(Jugador $jugador)
     {
-        //
+        $jugador->delete();
+        return redirect()->route('jugadores.index');
     }
 }

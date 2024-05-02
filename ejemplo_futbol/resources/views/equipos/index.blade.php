@@ -30,7 +30,7 @@
                     <td>{{ $index+1 }}</td>
                     <td>{{ $equipo->nombre }}</td>
                     <td>{{ $equipo->entrenador }}</td>
-                    <td>10</td>
+                    <td>{{ count($equipo->jugadores) }}</td>
                     <td>
                         <div class="row">
                             <div class="col">

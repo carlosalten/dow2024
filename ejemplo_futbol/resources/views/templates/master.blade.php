@@ -44,22 +44,22 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link  active " aria-current="page" href="{{ route('home.index') }}">Inicio</a>
+                            <a class="nav-link @if(Route::current()->getName()=='home.index') active @endif" aria-current="page" href="{{ route('home.index') }}">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="{{ route('equipos.index') }}">Equipos</a>
+                            <a class="nav-link @if(Route::current()->getName()=='equipos.index') active @endif" href="{{ route('equipos.index') }}">Equipos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('estadios.index') }}">Estadios</a>
+                            <a class="nav-link @if(Route::current()->getName()=='estadios.index') active @endif" href="{{ route('estadios.index') }}">Estadios</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Estadísticas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="{{ route('jugadores.index') }}">Jugadores</a>
+                            <a class="nav-link @if(Route::current()->getName()=='jugadores.index') active @endif" href="{{ route('jugadores.index') }}">Jugadores</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="{{ route('partidos.index') }}">Partidos</a>
+                            <a class="nav-link @if(Route::current()->getName()=='partidos.index') active @endif" href="{{ route('partidos.index') }}">Partidos</a>
                         </li>
 
                         <li class="nav-item dropdown">

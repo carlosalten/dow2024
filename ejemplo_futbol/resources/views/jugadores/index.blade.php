@@ -41,11 +41,18 @@
                     <td class="align-middle">{{$jugador->nombre}}</td>
                     <td class="align-middle">{{$jugador->numero_camiseta}}</td>
                     <td class="align-middle">{{$jugador->posicion}}</td>
-                    <td class="align-middle"></td>
+                    <td class="align-middle">{{ $jugador->equipo->nombre }}</td>
                     <td>
-                        <a href="#" class="btn btn-sm btn-danger pb-0" data-bs-toggle="tooltip" data-bs-title="Borrar Jugador">
+                        {{-- <a href="#" class="btn btn-sm btn-danger pb-0" data-bs-toggle="tooltip" data-bs-title="Borrar Jugador">
                             <span class="material-icons">delete</span>
-                        </a>
+                        </a> --}}
+                        <form method="POST" action="{{ route('jugadores.destroy',$jugador->rut) }}">
+                        @csrf
+                        @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-title="Borrar Jugador">
+                                <span class="material-icons">delete</span>
+                            </button>
+                        </form>
                     </td>
                     <td>
                         <a href="#" class="btn btn-sm btn-warning pb-0 text-white" data-bs-toggle="tooltip" data-bs-title="Editar Jugador">
