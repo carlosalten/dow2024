@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EstadiosController;
 use App\Http\Controllers\JugadoresController;
 use App\Http\Controllers\PartidosController;
+use App\Http\Controllers\EstadisticasController;
 
 
 //home
@@ -27,3 +28,6 @@ Route::delete('/jugadores/{jugador}',[JugadoresController::class,'destroy'])->na
 
 //partidos
 Route::get('/partidos',[PartidosController::class,'index'])->name('partidos.index');
+
+//estadisticas
+Route::get('/estadisticas',[EstadisticasController::class,'index'])->name('estadisticas.index');

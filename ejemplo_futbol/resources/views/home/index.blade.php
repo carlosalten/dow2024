@@ -44,7 +44,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Estadísticas</h5>
                     <div class="btn-group d-flex">
-                        <a class="btn btn-outline-success" href="#">Ver</a>
+                        <a class="btn btn-outline-success" href="{{ route('estadisticas.index') }}">Ver</a>
                     </div>
                 </div>
             </div>

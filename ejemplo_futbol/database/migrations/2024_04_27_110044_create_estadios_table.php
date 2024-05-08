@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('estadios', function (Blueprint $table) {
             $table->unsignedInteger('id')->autoIncrement();
-            $table->string('nombre',20);
-            $table->string('imagen',20)->nullable();//campo opcional
+            $table->string('nombre',50);
+            $table->string('imagen')->nullable();//campo opcional
             // $table->timestamps();
         });
     }
