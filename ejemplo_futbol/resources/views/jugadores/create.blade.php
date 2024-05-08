@@ -16,18 +16,30 @@
     <div class="card">
         <div class="card-header bg-dark text-white">Ingrese los datos del nuevo jugador</div>
         <div class="card-body">
+            {{-- mensajes de error --}}
+            @if($errors->any())
+            <div class="alert alert-danger">
+                <p>Por favor solucione los siguientes problemas:</p>
+                <ul>
+                    @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+            {{-- /mensajes de error --}}
             <form method="POST" action="{{ route('jugadores.store') }}">
                 @csrf
                 <div class="row">
                     {{-- nombre --}}
                     <div class="mb-3 col-12 col-md-6">
                         <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" id="nombre" name="nombre" class="form-control">
+                        <input type="text" id="nombre" name="nombre" class="form-control" value="{{ old('nombre') }}">
                     </div>
                     {{-- apellido --}}
                     <div class="mb-3 col-12 col-md-6">
                         <label for="apellido" class="form-label">Apellido</label>
-                        <input type="text" id="apellido" name="apellido" class="form-control">
+                        <input type="text" id="apellido" name="apellido" class="form-control" value="{{ old('apellido') }}">
                     </div>
                     {{-- rut --}}
                     <div class="mb-3 col-12 col-md-6">

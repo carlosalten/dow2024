@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Jugador;
 use App\Models\Equipo;
 use Illuminate\Http\Request;
+use App\Http\Requests\JugadorRequest;
+
 
 class JugadoresController extends Controller
 {
@@ -32,7 +34,7 @@ class JugadoresController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(JugadorRequest $request)
     {
         //crear un jugador
         $jugador = new Jugador();

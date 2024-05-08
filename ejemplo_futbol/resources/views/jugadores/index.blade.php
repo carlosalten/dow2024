@@ -43,16 +43,16 @@
                     <td class="align-middle">{{$jugador->posicion}}</td>
                     <td class="align-middle">{{ $jugador->equipo->nombre }}</td>
                     <td>
-                        {{-- <a href="#" class="btn btn-sm btn-danger pb-0" data-bs-toggle="tooltip" data-bs-title="Borrar Jugador">
+                        <a href="#" class="btn btn-sm btn-danger pb-0" data-bs-toggle="modal" data-bs-target="#borrarModal{{$jugador->rut}}">
                             <span class="material-icons">delete</span>
-                        </a> --}}
-                        <form method="POST" action="{{ route('jugadores.destroy',$jugador->rut) }}">
+                        </a>
+                        {{-- <form method="POST" action="{{ route('jugadores.destroy',$jugador->rut) }}">
                         @csrf
                         @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-title="Borrar Jugador">
-                                <span class="material-icons">delete</span>
-                            </button>
-                        </form>
+                        <button type="submit" class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-title="Borrar Jugador">
+                            <span class="material-icons">delete</span>
+                        </button>
+                        </form> --}}
                     </td>
                     <td>
                         <a href="#" class="btn btn-sm btn-warning pb-0 text-white" data-bs-toggle="tooltip" data-bs-title="Editar Jugador">
@@ -60,6 +60,32 @@
                         </a>
                     </td>
                 </tr>
+                {{-- modal --}}
+                <div class="modal fade" id="borrarModal{{$jugador->rut}}" tabindex="-1" aria-labelledby="borrarModal{{$jugador->rut}}Label" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="borrarModal{{$jugador->rut}}Label">
+                                    Confirmar Borrado de Jugador de {{$jugador->equipo->nombre}}
+                                </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                ¿Borrar el jugador <strong>{{ $jugador->nombre }} {{ $jugador->apellido }}</strong>?
+                            </div>
+                            <div class="modal-footer">
+                                <form method="POST" action="{{ route('jugadores.destroy',$jugador->rut) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="submit" class="btn btn-danger">Borrar Jugador</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- /modal --}}
                 @endforeach
             </tbody>
         </table>
@@ -71,5 +97,6 @@
 <script>
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
 </script>
 @endsection
