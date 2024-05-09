@@ -34,7 +34,12 @@
                     {{-- nombre --}}
                     <div class="mb-3 col-12 col-md-6">
                         <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" id="nombre" name="nombre" class="form-control" value="{{ old('nombre') }}">
+                        <input type="text" id="nombre" name="nombre" class="form-control @error('nombre') is-invalid @enderror" value="{{ old('nombre') }}">
+                        @error('nombre')
+                        <div id="validationServer03Feedback" class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                        @enderror
                     </div>
                     {{-- apellido --}}
                     <div class="mb-3 col-12 col-md-6">
@@ -44,7 +49,7 @@
                     {{-- rut --}}
                     <div class="mb-3 col-12 col-md-6">
                         <label for="rut" class="form-label">RUT</label>
-                        <input type="text" id="rut" name="rut" class="form-control">
+                        <input type="text" id="rut" name="rut" class="form-control" value='{{old('rut')}}'>
                     </div>
                     {{-- número de camiseta --}}
                     <div class="mb-3 col-12 col-md-6">
@@ -85,11 +90,16 @@
                     {{-- equipo --}}
                     <div class="mb-3">
                         <label class="form-label" for="equipo">Equipo</label>
-                        <select id="equipo" name="equipo" class="form-control">
+                        <select id="equipo" name="equipo" class="form-control @error('equipo') is-invalid @enderror">
                             @foreach($equipos as $equipo)
-                            <option value="{{ $equipo->id }}">{{ $equipo->nombre }}</option>
+                            <option value="{{$equipo->id}}">{{ $equipo->nombre }}</option>
                             @endforeach
                         </select>
+                        @error('equipo')
+                        <div id="validationServer03Feedback" class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                        @enderror
                     </div>
                     {{-- botones --}}
                     <div class="mb-3 d-grid gap-2 d-lg-block">

@@ -56,7 +56,7 @@
                             <a class="nav-link @if(Route::current()->getName()=='estadisticas.index') active @endif" href="{{ route('estadisticas.index') }}">Estadísticas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @if(Route::current()->getName()=='jugadores.index') active @endif" href="{{ route('jugadores.index') }}">Jugadores</a>
+                            <a class="nav-link @if(Route::current()->getName()=='jugadores.index' || Route::current()->getName()=='jugadores.create') active @endif" href="{{ route('jugadores.index') }}">Jugadores</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link @if(Route::current()->getName()=='partidos.index') active @endif" href="{{ route('partidos.index') }}">Partidos</a>

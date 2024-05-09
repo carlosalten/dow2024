@@ -13,8 +13,10 @@ use App\Http\Controllers\EstadisticasController;
 Route::get('/',[HomeController::class,'index'])->name('home.index');
 
 //equipos
-Route::get('/equipos',[EquiposController::class,'index'])->name('equipos.index');
-Route::post('/equipos',[EquiposController::class,'store'])->name('equipos.store');
+// Route::get('/equipos',[EquiposController::class,'index'])->name('equipos.index');
+// Route::post('/equipos',[EquiposController::class,'store'])->name('equipos.store');
+// Route::delete('/equipos/{equipo}',[EquiposController::class,'destroy'])->name('equipos.destroy');
+Route::resource('/equipos',EquiposController::class);
 
 //estadios
 Route::get('/estadios',[EstadiosController::class,'index'])->name('estadios.index');

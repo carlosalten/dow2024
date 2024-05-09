@@ -15,6 +15,10 @@ return new class extends Migration
             $table->unsignedInteger('id')->autoIncrement();
             $table->string('nombre',20);
             $table->string('entrenador',30);
+            
+            //borrado logico
+            $table->softDeletes();
+
             // $table->timestamps();
         });
     }
