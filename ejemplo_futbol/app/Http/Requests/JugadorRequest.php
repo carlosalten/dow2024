@@ -46,7 +46,14 @@ class JugadorRequest extends FormRequest
             'rut.required' => 'Ingrese el RUT',
             'rut.unique' => 'El RUT :input ya está asignado a otro jugador',
             'numero_camiseta.required' => 'Ingrese el número de camiseta',
+            'numero_camiseta.integer' => 'El número de camiseta debe ser un número entero',
+            'numero_camiseta.gte' => 'El número de camiseta debe ser un número entre 1 y 99',
+            'numero_camiseta.lte' => 'El número de camiseta debe ser un número entre 1 y 99',
+            'posicion.required' => 'Indique la posición del jugador',
             'posicion.in' => 'Indique una posición válida',
+            'equipo.required' => 'Indique el equipo del jugador',
+            'equipo.integer' => 'Indique un equipo válido',
+            'equipo.gte' => 'Indique un equipo válido',
             'equipo.exists' => 'El equipo no existe en el sistema',
         ];
     }

@@ -2,7 +2,7 @@
 
 @section('contenido-principal')
 {{-- titulo --}}
-<div class="row mt-23">
+<div class="row mt-3">
     <div class="col-8">
         <h3>Agregar Jugador</h3>
     </div>
@@ -36,7 +36,7 @@
                         <label for="nombre" class="form-label">Nombre</label>
                         <input type="text" id="nombre" name="nombre" class="form-control @error('nombre') is-invalid @enderror" value="{{ old('nombre') }}">
                         @error('nombre')
-                        <div id="validationServer03Feedback" class="invalid-feedback">
+                        <div id="nombreFeedback" class="invalid-feedback">
                             {{$message}}
                         </div>
                         @enderror
@@ -44,17 +44,32 @@
                     {{-- apellido --}}
                     <div class="mb-3 col-12 col-md-6">
                         <label for="apellido" class="form-label">Apellido</label>
-                        <input type="text" id="apellido" name="apellido" class="form-control" value="{{ old('apellido') }}">
+                        <input type="text" id="apellido" name="apellido" class="form-control @error('apellido') is-invalid @enderror" value="{{ old('apellido') }}">
+                        @error('apellido')
+                        <div id="apellidoFeedback" class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                        @enderror
                     </div>
                     {{-- rut --}}
                     <div class="mb-3 col-12 col-md-6">
                         <label for="rut" class="form-label">RUT</label>
-                        <input type="text" id="rut" name="rut" class="form-control" value='{{old('rut')}}'>
+                        <input type="text" id="rut" name="rut" class="form-control @error('rut') is-invalid @enderror" value="{{old('rut')}}">
+                        @error('rut')
+                        <div id="rutFeedback" class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                        @enderror
                     </div>
                     {{-- número de camiseta --}}
                     <div class="mb-3 col-12 col-md-6">
                         <label for="numero_camiseta" class="form-label">Número de Camiseta</label>
-                        <input type="text" id="numero_camiseta" name="numero_camiseta" class="form-control">
+                        <input type="text" id="numero_camiseta" name="numero_camiseta" class="form-control @error('numero_camiseta') is-invalid @enderror" value="{{old('numero_camiseta')}}">
+                        @error('numero_camiseta')
+                        <div id="numero_camisetaFeedback" class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                        @enderror
                     </div>
                     {{-- posición en la que juega --}}
                     <div class="mb-3 row px-3">
@@ -62,7 +77,7 @@
                             <label class="form-label">Posición</label>
                         </div>
 
-                        <div class="form-check col-12 col-md-3">
+                        <div class="form-check col-12 col-md-3 is-invalid">
                             <input class="form-check-input" type="radio" name="posicion" id="pos_arquero" value="Arquero" checked>
                             <label class="form-check-label" for="pos_arquero">
                                 Arquero
@@ -91,12 +106,13 @@
                     <div class="mb-3">
                         <label class="form-label" for="equipo">Equipo</label>
                         <select id="equipo" name="equipo" class="form-control @error('equipo') is-invalid @enderror">
+                            <option value="0">Seleccione</option>
                             @foreach($equipos as $equipo)
-                            <option value="{{$equipo->id}}">{{ $equipo->nombre }}</option>
+                            <option value="{{$equipo->id}}" @if(old('equipo')==$equipo->id) selected @endif>{{ $equipo->nombre }}</option>
                             @endforeach
                         </select>
                         @error('equipo')
-                        <div id="validationServer03Feedback" class="invalid-feedback">
+                        <div id="equipoFeedback" class="invalid-feedback">
                             {{$message}}
                         </div>
                         @enderror
