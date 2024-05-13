@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use App\Rules\NumeroCamisetaRepetidoRule;
 
 class JugadorRequest extends FormRequest
 {
@@ -26,7 +27,7 @@ class JugadorRequest extends FormRequest
             'nombre' => ['required','alpha','min:2','max:20'],
             'apellido' => ['required','alpha','min:2','max:20'],
             'rut' => ['required','min:9','max:10','unique:jugadores,rut'],
-            'numero_camiseta' => ['required','integer','gte:1','lte:99'],
+            'numero_camiseta' => ['required','integer','gte:1','lte:99',new NumeroCamisetaRepetidoRule(request('equipo'))],
             'posicion' => ['required',Rule::in(['Arquero','Defensa','Volante','Delantero'])],
             'equipo' => ['required','integer','gte:1','exists:equipos,id'],
         ];
