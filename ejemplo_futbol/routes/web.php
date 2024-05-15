@@ -20,7 +20,7 @@ Route::resource('/equipos',EquiposController::class);
 
 //estadios
 Route::get('/estadios',[EstadiosController::class,'index'])->name('estadios.index');
-Route::post('/estadios',[EquiposController::class,'store'])->name('estadios.store');
+Route::post('/estadios',[EstadiosController::class,'store'])->name('estadios.store');
 
 //jugadores
 Route::get('/jugadores',[JugadoresController::class,'index'])->name('jugadores.index');

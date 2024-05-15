@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Estadio;
 use Illuminate\Http\Request;
+use App\Http\Requests\EstadioRequest;
 
 class EstadiosController extends Controller
 {
@@ -27,9 +28,13 @@ class EstadiosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(EstadioRequest $request)
     {
-        //
+        $estadio = new Estadio();
+        $estadio->nombre = $request->nombre;
+        $estadio->imagen = $request->file('imagen')->store('public/estadios');
+        $estadio->save();
+        return redirect()->route('estadios.index');
     }
 
     /**
