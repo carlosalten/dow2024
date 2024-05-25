@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Equipo;
 use Illuminate\Http\Request;
+use App\Http\Requests\EquipoRequest;
 
 class EquiposController extends Controller
 {
@@ -12,7 +13,8 @@ class EquiposController extends Controller
      */
     public function index()
     {
-        $equipos = Equipo::all();//select * from equipos
+        // $equipos = Equipo::all();//select * from equipos
+        $equipos = Equipo::orderBy('nombre')->get();
         return view('equipos.index',compact('equipos'));
     }
 
@@ -27,7 +29,7 @@ class EquiposController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(EquipoRequest $request)
     {
         $equipo = new Equipo();
         $equipo->nombre = $request->nombre;

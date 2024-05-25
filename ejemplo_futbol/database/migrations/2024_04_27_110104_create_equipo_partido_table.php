@@ -19,7 +19,7 @@ return new class extends Migration
 
             //datos de la relación equipo-partido
             $table->tinyInteger('goles')->default(0);
-            $table->boolean('esLocal');
+            $table->boolean('es_local');
 
             //la PK compuesta también es FK
             $table->foreign('equipo_id')->references('id')->on('equipos');

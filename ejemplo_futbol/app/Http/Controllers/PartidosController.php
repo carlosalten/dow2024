@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Partido;
 use Illuminate\Http\Request;
+use App\Models\Estadio;
+use App\Models\Equipo;
+use App\Http\Requests\PartidoRequest;
 
 class PartidosController extends Controller
 {
@@ -12,7 +15,10 @@ class PartidosController extends Controller
      */
     public function index()
     {
-        return view('partidos.index');
+        $estadios = Estadio::all();//select * from estadios
+        $equipos = Equipo::orderBy('nombre')->get();//select * from equipos orderby nombre
+        $partidos = Partido::all();
+        return view('partidos.index',compact(['estadios','equipos','partidos']));
     }
 
     /**
@@ -26,9 +32,21 @@ class PartidosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PartidoRequest $request)
     {
-        //
+        //inserta en tabla partido
+        $partido = new Partido();
+        $partido->estadio_id = $request->estadio;
+        $partido->jugado = false;
+        $partido->fecha = $request->fecha;
+        $partido->save();
+
+        //inserta en tabla equipo_partido (2 inserts)
+        $partido->equipos()->attach($request->equipo_local,['es_local'=>true,'goles'=>0]);
+        $partido->equipos()->attach($request->equipo_visita,['es_local'=>false,'goles'=>0]);
+
+        //volver a la pagina
+        return redirect()->route('partidos.index');
     }
 
     /**
@@ -60,6 +78,13 @@ class PartidosController extends Controller
      */
     public function destroy(Partido $partido)
     {
-        //
+        //borrar registros en tabla de intersección (pivot)
+        $partido->equipos()->detach();
+
+        //borrar registro en tabla partido
+        $partido->delete();
+
+        //volver a la vista
+        return redirect()->route('partidos.index');
     }
 }

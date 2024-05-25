@@ -29,7 +29,8 @@ Route::post('/jugadores',[JugadoresController::class,'store'])->name('jugadores.
 Route::delete('/jugadores/{jugador}',[JugadoresController::class,'destroy'])->name('jugadores.destroy');
 
 //partidos
-Route::get('/partidos',[PartidosController::class,'index'])->name('partidos.index');
+// Route::get('/partidos',[PartidosController::class,'index'])->name('partidos.index');
+Route::resource('/partidos',PartidosController::class);
 
 //estadisticas
 Route::get('/estadisticas',[EstadisticasController::class,'index'])->name('estadisticas.index');

@@ -91,13 +91,24 @@
             <div class="card-body">
                 <form method="POST" action="{{ route('equipos.store') }}">
                     @csrf
+
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" id="nombre" name="nombre" class="form-control">
+                        <input type="text" id="nombre" name="nombre" class="form-control @error('nombre') is-invalid @enderror" value="{{ old('nombre') }}">
+                        @error('nombre')
+                        <div id="nombreFeedback" class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="entrenador" class="form-label">Entrenador</label>
-                        <input type="text" id="entrenador" name="entrenador" class="form-control">
+                        <input type="text" id="entrenador" name="entrenador" class="form-control @error('entrenador') is-invalid @enderror" value="{{ old('entrenador') }}">
+                        @error('entrenador')
+                        <div id="entrenadorFeedback" class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                        @enderror
                     </div>
                     <div class="mb-3 d-grid gap-2 d-lg-block">
                         <button class="btn btn-warning" type="reset">Cancelar</button>
