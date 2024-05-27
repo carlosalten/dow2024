@@ -14,6 +14,11 @@
 <div class="row">
     <!-- tabla -->
     <div class="col-12 col-lg-8 order-last order-lg-first">
+        @if(count($partidos)==0)
+        <div class="alert alert-info" role="alert">
+            No hay partidos
+        </div>
+        @else
         <table class="table table-bordered table-striped table-hover">
             <thead class="table-dark">
                 <tr>
@@ -28,6 +33,7 @@
                 </tr>
             </thead>
             <tbody>
+
                 @foreach($partidos as $nume=>$partido)
                 <tr>
                     <td class="align-middle">{{ $nume+1 }}</td>
@@ -103,6 +109,7 @@
                 @endforeach
             </tbody>
         </table>
+        @endif
     </div>
 
     <!--formulario crear partido-->

@@ -10,6 +10,11 @@
 <div class="row">
     <!-- tabla -->
     <div class="col-12 col-lg-8 order-last order-lg-first">
+        @if(count($estadios)==0)
+        <div class="alert alert-info" role="alert">
+            No hay estadios
+        </div>
+        @else
         <div class="row">
             @foreach($estadios as $estadio)
             {{-- card estadio --}}
@@ -30,8 +35,8 @@
             </div>
             @endforeach
         </div>
+        @endif
     </div>
-
 
     <!-- form -->
     <div class="col-12 col-lg-4 order-first order-lg-last mb-3">
@@ -68,6 +73,7 @@
             </div>
         </div>
     </div>
+
 </div>
 
 @endsection

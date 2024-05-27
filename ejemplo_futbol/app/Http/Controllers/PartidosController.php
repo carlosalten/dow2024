@@ -54,7 +54,9 @@ class PartidosController extends Controller
      */
     public function show(Partido $partido)
     {
-        //
+        //ver detalle de un partido
+        //utilizado para indicar resultado
+        return view('partidos.show',compact('partido'));
     }
 
     /**

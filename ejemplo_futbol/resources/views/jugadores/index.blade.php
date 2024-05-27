@@ -19,6 +19,11 @@
 {{-- tabla --}}
 <div class="row">
     <div class="col">
+        @if(count($jugadores)==0)
+        <div class="alert alert-warning" role="alert">
+            No hay jugadores
+        </div>
+        @else
         <table class="table table-bordered table-striped table-hover">
             <thead class="table-dark">
                 <tr>
@@ -88,6 +93,7 @@
                 @endforeach
             </tbody>
         </table>
+        @endif
     </div>
 </div>
 @endsection

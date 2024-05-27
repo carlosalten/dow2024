@@ -14,6 +14,11 @@
 <div class="row">
     <!-- tabla -->
     <div class="col-12 col-lg-8 order-last order-lg-first">
+        @if(count($equipos)==0)
+        <div class="alert alert-warning" role="alert">
+            No hay equipos
+        </div>
+        @else
         <table class="table table striped table-bordered table-hover">
             <thead class="table-dark">
                 <tr>
@@ -79,6 +84,7 @@
                 @endforeach
             </tbody>
         </table>
+        @endif
     </div>
 
 
