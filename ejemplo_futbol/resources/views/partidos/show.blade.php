@@ -1,3 +1,5 @@
+@inject('carbon','Carbon\Carbon')
+
 @extends('templates.master')
 
 @section('contenido-principal')
@@ -16,33 +18,42 @@
                         {{-- datos partido --}}
                         <div class="col-12 col-lg-6 mb-3 mb-lg-0">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><strong>Fecha: </strong>28-05-2024</li>
-                                <li class="list-group-item"><strong>Estadio: </strong>Nacional Julio Martínez</li>
-                                <li class="list-group-item"><strong>Equipo Local: </strong>Audax Italiano</li>
-                                <li class="list-group-item"><strong>Equipo Visita: </strong>Universidad de Chile</li>
-                                <li class="list-group-item"><strong>Estado: </strong>Pendiente</li>
-                                <li class="list-group-item"><strong>Resultado: 0-0</strong></li>
+                                <li class="list-group-item"><strong>Fecha: </strong>{{ $carbon::parse($partido->fecha)->format('d/m/Y') }}</li>
+                                <li class="list-group-item"><strong>Estadio: </strong>{{ $partido->estadio->nombre }}</li>
+                                <li class="list-group-item"><strong>Equipo Local: </strong>{{ $partido->equipos->where('pivot.es_local',true)->first()->nombre }}</li>
+                                <li class="list-group-item"><strong>Equipo Visita: </strong>{{ $partido->equipos->where('pivot.es_local',false)->first()->nombre }}</li>
+                                <li class="list-group-item"><strong>Estado: </strong>
+                                    {{ $partido->jugado==0?'Pendiente':'Finalizado' }}
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Resultado: </strong>
+                                    {{ $partido->equipos->where('pivot.es_local',true)->first()->pivot->goles }}
+                                    -
+                                    {{ $partido->equipos->where('pivot.es_local',false)->first()->pivot->goles }}
+                                </li>
                             </ul>
                         </div>
                         {{-- /datos partido --}}
 
                         {{-- imagen estadio --}}
                         <div class="col-12 col-lg-3 order-lg-first mb-3 mb-lg-0">
-                            <img class="img-fluid rounded" src="/storage/estadios/YYZsdTSwavlJTB8hVOr7viP04D3gRjwISjE4ZzLR.jpg">
+                            <img class="img-fluid rounded" src="{{ Storage::url($partido->estadio->imagen) }}">
                         </div>
                         {{-- /imagen estadio --}}
 
                         {{-- formulario modificar resultado --}}
                         <div class="col-12 col-lg-3">
                             <h4>Goles</h4>
-                            <form>
+                            <form method="POST" action="{{ route('partidos.resultados',$partido->id) }}">
+                                @csrf
+                                @method('PATCH')
                                 <div class="mb-3">
-                                    <label for="equipo_local" class="form-label">Audax Italiano</label>
-                                    <input type="number" id="equipo_local" name="equipo_local" class="form-control" value="0">
+                                    <label for="equipo_local" class="form-label">{{ $partido->equipos->where('pivot.es_local',true)->first()->nombre }}</label>
+                                    <input type="number" id="equipo_local" name="equipo_local" class="form-control" value="{{ $partido->equipos->where('pivot.es_local',true)->first()->pivot->goles }}">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="equipo_visita" class="form-label">Universidad de Chile</label>
-                                    <input type="number" id="equipo_visita" name="equipo_visita" class="form-control" value="0">
+                                    <label for="equipo_visita" class="form-label">{{ $partido->equipos->where('pivot.es_local',false)->first()->nombre }}</label>
+                                    <input type="number" id="equipo_visita" name="equipo_visita" class="form-control" value="{{ $partido->equipos->where('pivot.es_local',false)->first()->pivot->goles }}">
                                 </div>
                                 <div class="mb-3 d-grid gap-2 d-lg-block text-end">
                                     <button type="submit" class="btn btn-success">Modificar Resultados</button>

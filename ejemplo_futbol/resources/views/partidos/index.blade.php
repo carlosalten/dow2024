@@ -1,3 +1,5 @@
+@inject('carbon','Carbon\Carbon')
+
 @extends('templates.master')
 
 @section('hojas-estilo')
@@ -37,7 +39,7 @@
                 @foreach($partidos as $nume=>$partido)
                 <tr>
                     <td class="align-middle">{{ $nume+1 }}</td>
-                    <td class="align-middle">{{ $partido->fecha }}</td>
+                    <td class="align-middle">{{ $carbon::parse($partido->fecha)->format('d/m/Y') }}</td>
                     {{-- <td class="align-middle">15:30 hrs</td> --}}
                     <td class="align-middle">
                         @if($partido->jugado==0)
@@ -73,7 +75,7 @@
                             </div>
                             {{-- Modificar Estado y Resultados --}}
                             <div class="col text-center">
-                                <a href="#" class="btn btn-sm btn-info pb-0 text-white" data-bs-toggle="tooltip" data-bs-title="Modificar Estado y Resultados">
+                                <a href="{{ route('partidos.show',$partido->id) }}" class="btn btn-sm btn-info pb-0 text-white" data-bs-toggle="tooltip" data-bs-title="Modificar Estado y Resultados">
                                     <span class="material-icons">sports_soccer</span>
                                 </a>
                             </div>

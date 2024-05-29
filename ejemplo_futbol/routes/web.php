@@ -31,6 +31,7 @@ Route::delete('/jugadores/{jugador}',[JugadoresController::class,'destroy'])->na
 //partidos
 // Route::get('/partidos',[PartidosController::class,'index'])->name('partidos.index');
 Route::resource('/partidos',PartidosController::class);
+Route::patch('/partidos/resultados/{partido}',[PartidosController::class,'resultados'])->name('partidos.resultados');
 
 //estadisticas
 Route::get('/estadisticas',[EstadisticasController::class,'index'])->name('estadisticas.index');

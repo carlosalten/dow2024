@@ -54,6 +54,7 @@ class PartidosController extends Controller
      */
     public function show(Partido $partido)
     {
+        //return $partido;
         //ver detalle de un partido
         //utilizado para indicar resultado
         return view('partidos.show',compact('partido'));
@@ -87,6 +88,19 @@ class PartidosController extends Controller
         $partido->delete();
 
         //volver a la vista
+        return redirect()->route('partidos.index');
+    }
+
+    public function resultados(Request $request, Partido $partido)
+    {
+        // echo $partido->id.' '.$request->equipo_local;
+        // exit();
+        $equipo_local_id = $partido->equipos->where('pivot.es_local',true)->first()->id;
+        $equipo_visita_id = $partido->equipos->where('pivot.es_local',false)->first()->id;
+
+        $partido->equipos()->updateExistingPivot($equipo_local_id,['goles'=>$request->equipo_local]);
+        $partido->equipos()->updateExistingPivot($equipo_visita_id,['goles'=>$request->equipo_visita]);
+
         return redirect()->route('partidos.index');
     }
 }
