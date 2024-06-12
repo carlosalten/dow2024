@@ -7,6 +7,5 @@
                 <a href="{{ route($url) }}" class="btn btn-sm btn-secondary">{{ $textoBoton }}</a>
             </div>
         </div>
-
     </div>
 </div>

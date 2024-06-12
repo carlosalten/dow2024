@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Usuario extends Model
+class Usuario extends Authenticatable
 {
     use HasFactory;
 
@@ -29,5 +30,9 @@ class Usuario extends Model
         return $this->hasMany(Solicitud::class,'usuario_email','email');
     }
 
-
+    //retorna el nombre del rol del usuario
+    public function nombreRol():String
+    {
+        return $this->rol->nombre;
+    }
 }

@@ -22,7 +22,7 @@
                     @auth
                     <small>{{ Auth::user()->nombre }} ({{ Auth::user()->nombreRol() }})</small>
                     @endauth
-                    <a href="#" class="btn btn-sm btn-outline-success">
+                    <a href="{{ route('usuarios.logout') }}" class="btn btn-sm btn-outline-success">
                         <span class="material-icons fs-6">logout</span>
                     </a>
                 </div>

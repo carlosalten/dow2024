@@ -73,16 +73,26 @@ class UsuariosController extends Controller
         return view('usuarios.login');
     }
 
-    //revisa credenciales
+    //revisa credenciales (recibe el email y password)
     public function autenticar(Request $request)
     {
-     
+        //$credenciales = ['email'=>$request->email,'password'=>$request->password];
+        $credenciales = $request->only(['email','password']);
+        if(Auth::attempt($credenciales))
+        {
+            //credenciales están ok :)
+            $request->session()->regenerate();
+            return redirect()->route('home.index');
+        }
+        //credenciales fail :(
+        return back()->withErrors('Credenciales incorrectas');
     }
 
     //cerrar sesión
     public function logout()
     {
-        
+        Auth::logout();
+        return redirect()->route('usuarios.login');
     }
 
     //muestra página con formulario para cambiar password
