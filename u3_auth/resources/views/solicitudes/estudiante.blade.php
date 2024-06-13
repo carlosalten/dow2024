@@ -21,7 +21,6 @@
                 <th>Tipo</th>
                 <th>Estado</th>
                 <th>Resolución</th>
-                <th>Acciones</th>
             </tr>
         </thead>
         <tbody></tbody>
