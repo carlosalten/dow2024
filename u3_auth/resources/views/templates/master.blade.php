@@ -43,22 +43,29 @@
                         <span class="material-icons me-2">home</span>
                         Inicio
                     </a>
+                    @if(Gate::allows('solicitudes-estudiante'))
                     <a class="list-group-item list-group-item-action d-flex align-items-center @if(Route::current()->getName()=='solicitudes.estudiante') active @endif" href="{{ route('solicitudes.estudiante') }}">
                         <span class="material-icons me-2">description</span>
                         Solicitudes
                     </a>
+                    @endif
+                    @if(Gate::allows('solicitudes-gestion'))
                     <a class="list-group-item list-group-item-action d-flex align-items-center @if(Route::current()->getName()=='solicitudes.index') active @endif" href="{{ route('solicitudes.index') }}">
                         <span class="material-icons me-2">library_books</span>
                         Solicitudes de Estudiantes
                     </a>
+                    @endif
+                    @if(Gate::allows('usuarios-gestion'))
                     <a class="list-group-item list-group-item-action d-flex align-items-center @if(Route::current()->getName()=='salas.index' || Route::current()->getName()=='salas.create') active @endif" href="{{ route('salas.index') }}">
                         <span class="material-icons me-2">local_library</span>
                         Gestión de Salas
                     </a>
+
                     <a class="list-group-item list-group-item-action d-flex align-items-center @if(Route::current()->getName()=='usuarios.index' || Route::current()->getName()=='usuarios.create') active @endif" href="{{ route('usuarios.index') }}">
                         <span class="material-icons me-2">group</span>
                         Gestión de Usuarios
                     </a>
+                    @endif
                     <a class="list-group-item list-group-item-action d-flex align-items-center @if(Route::current()->getName()=='usuarios.contrasena') active @endif" href="{{ route('usuarios.contrasena') }}">
                         <span class="material-icons me-2">key</span>
                         Cambiar mi Contraseña

@@ -6,6 +6,7 @@ use App\Models\Usuario;
 use App\Models\Rol;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Gate;
 
 class UsuariosController extends Controller
 {
@@ -14,6 +15,12 @@ class UsuariosController extends Controller
      */
     public function index()
     {
+        //si el Gate no lo permite, sacar al usuario de acá
+        if(Gate::denies('usuarios-gestion'))
+        {
+            return redirect()->route('home.index');
+        }
+
         $usuarios = Usuario::orderBy('rol_id')->orderBy('email')->get();
         return view('usuarios.index',compact('usuarios'));
     }
@@ -76,16 +83,16 @@ class UsuariosController extends Controller
     //revisa credenciales (recibe el email y password)
     public function autenticar(Request $request)
     {
-        //$credenciales = ['email'=>$request->email,'password'=>$request->password];
+        // $credenciales = ['email'=>$request->email,'password'=>$request->password];
         $credenciales = $request->only(['email','password']);
+
         if(Auth::attempt($credenciales))
         {
-            //credenciales están ok :)
+            //credenciales correctas
             $request->session()->regenerate();
             return redirect()->route('home.index');
         }
-        //credenciales fail :(
-        return back()->withErrors('Credenciales incorrectas');
+        return back()->withErrors('Credenciales incorrectas :(')->onlyInput('email');
     }
 
     //cerrar sesión

@@ -11,6 +11,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        //ruta a la que son enviados los usuarios anónimos
         $middleware->redirectGuestsTo('/usuarios/login');
     })
     ->withExceptions(function (Exceptions $exceptions) {

@@ -16,6 +16,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/usuarios/crear',[UsuariosController::class,'create'])->name('usuarios.create');
     Route::get('/usuarios/logout',[UsuariosController::class,'logout'])->name('usuarios.logout');
 });
+
 Route::get('/usuarios/login',[UsuariosController::class,'login'])->name('usuarios.login');
 Route::post('/usuarios/autenticar',[UsuariosController::class,'autenticar'])->name('usuarios.autenticar');
 
@@ -26,6 +27,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/solicitudes/estudiante',[SolicitudesController::class,'solicitudesEstudiante'])->name('solicitudes.estudiante');
 });
 
+
 //Salas
-Route::resource('/salas',SalasController::class,['except'=>['index','create']])->middleware('auth');
-Route::resource('/salas',SalasController::class,['only'=>['index','create']]);
+Route::resource('/salas',SalasController::class,['except'=>['index','show']])->middleware('auth');
+Route::resource('/salas',SalasController::class,['only'=>['index','show']]);

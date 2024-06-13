@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Solicitud;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SolicitudesController extends Controller
 {
@@ -16,6 +17,9 @@ class SolicitudesController extends Controller
     //retorna las solicitudes del estudiante que inició sesión
     public function solicitudesEstudiante()
     {
-        return view('solicitudes.estudiante');
+        //obtener las solicitudes del estudiante que inició sesión
+        //SELECT * FROM solicitudes WHERE usuario_email = 'estu1@usm.cl'
+        $solicitudes = Solicitud::where('usuario_email',Auth::user()->email)->get();
+        return view('solicitudes.estudiante',compact('solicitudes'));
     }
 }

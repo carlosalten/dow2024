@@ -1,4 +1,5 @@
 @extends('templates.master',['tituloPagina'=>'Mis Solicitudes'])
+@inject('carbon','Carbon\Carbon')
 
 @section('contenido-pagina')
 {{-- agregar solicitud --}}
@@ -17,13 +18,24 @@
         <thead class="table-light">
             <tr>
                 <th>Nº</th>
-                <th>Ingresada</th>
+                <th colspan="2">Ingresada</th>
                 <th>Tipo</th>
                 <th>Estado</th>
                 <th>Resolución</th>
             </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+            @foreach($solicitudes as $index=>$solicitud)
+            <tr>
+                <td>{{ $index+1 }}</td>
+                <td>{{ $carbon::parse($solicitud->created_at)->format('d-m-Y') }}</td>
+                <td>{{ $carbon::parse($solicitud->created_at)->format('H:i') }} hrs.</td>
+                <td>{{ $solicitud->nombreTipo() }}</td>
+                <td>{{ $solicitud->nombreEstado() }}</td>
+                <td>{{ $solicitud->nombreResolucion() }}</td>
+            </tr>
+            @endforeach
+        </tbody>
     </table>
 </div>
 {{-- /solicitudes --}}

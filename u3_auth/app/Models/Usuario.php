@@ -35,4 +35,19 @@ class Usuario extends Authenticatable
     {
         return $this->rol->nombre;
     }
+
+    public function esAdministrador():bool
+    {
+        return $this->rol->nombre=='Administrador';
+    }
+
+    public function esFuncionario():bool
+    {
+        return $this->rol->nombre=='Funcionario';
+    }
+
+    public function esEstudiante():bool
+    {
+        return $this->rol->nombre=='Estudiante';
+    }
 }
